@@ -15,4 +15,14 @@
          which is used to tint widgets -->
     <item name="colorAccent">#cf3</item>
   </style>
+
+    <!--Splash Screen-->
+  <style name="Theme.Splash" parent="android:Theme">
+    <item name="android:windowBackground">@mipmap/splash</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="colorPrimaryDark">#c1e821</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="android:actionBarSize">0dp</item>
+  </style>
 </resources>

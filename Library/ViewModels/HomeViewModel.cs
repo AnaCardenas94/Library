@@ -21,7 +21,10 @@ namespace Library.ViewModels
 
         {
             if(!string.IsNullOrEmpty(Book.Trim()))
-            await Application.Current.MainPage.Navigation.PushAsync(new Books(book));            
+                await Application.Current.MainPage.Navigation.PushAsync(new Books(book));
+
+            else
+                await Application.Current.MainPage.DisplayAlert("Attention", "You must enter a book", "OK");
         }
     }
 }
