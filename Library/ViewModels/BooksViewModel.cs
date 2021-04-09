@@ -78,7 +78,6 @@ namespace Library.ViewModels
             bookByPagination.startIndex = Items.Count().ToString();
             bookByPagination.maxResults = "20";
            
-
             var newResponse = await _bookService.GetBooksByPagination(bookByPagination);
 
             
