@@ -72,6 +72,7 @@ namespace Library.ViewModels
         private async Task ReachedAsync()
         {
             IsBusy = true;
+            ItemTreshold = -1;
             BookByPagination bookByPagination = new BookByPagination();
             bookByPagination.bookName =  bookName;
             bookByPagination.startIndex = Items.Count().ToString();
@@ -87,6 +88,9 @@ namespace Library.ViewModels
                         {
                             Items.Add(item);
                         }
+
+                    ItemTreshold = 0;
+
                     }
                     else
                     {
