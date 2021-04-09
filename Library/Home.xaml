@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    Title="Google Books"
+    ios:Page.UseSafeArea="true"
+    x:Class="Library.Home">
+    <StackLayout Orientation="Vertical"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+                 Spacing="0"
+                 Margin="24,16">
+        <Label FontSize="18" Text="Google Books API" Padding="0,15" FontAttributes="Bold"/>
+        <StackLayout Orientation="Horizontal">
+            <Entry Placeholder="cats" Keyboard="Text" MaxLength="100" WidthRequest="180" Text="{Binding Book}"/>
+            <Button Text="Search" TextColor="Black" BackgroundColor="#cf3" FontAttributes="Bold" WidthRequest="90" Command="{Binding SearchCommand}"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

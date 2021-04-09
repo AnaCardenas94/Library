@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    Title="Books"
+    x:Class="Library.Books">
+   <StackLayout Margin="0" Spacing="8">
+            <CollectionView
+                x:Name="ItemList"
+                BackgroundColor="Transparent"
+                VerticalOptions="FillAndExpand"
+                ItemsSource="{Binding Items}"
+                RemainingItemsThreshold="{Binding ItemTreshold}"
+                RemainingItemsThresholdReachedCommand="{Binding ReachedCommand}"
+                VerticalScrollBarVisibility="Always">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                            <Frame
+                                Margin="16,8"
+                                BorderColor="#cf3"
+                                CornerRadius="16"
+                                HasShadow="False">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <ffimageloading:CachedImage
+                                        Grid.RowSpan="3"
+                                        Grid.Column="0"
+                                        Aspect="AspectFit"
+                                        FadeAnimationEnabled="True"
+                                        HeightRequest="60"
+                                        HorizontalOptions="Center"
+                                        Source="{Binding VolumeInfo.ImageLinks.Thumbnail}"
+                                        VerticalOptions="Center"
+                                        WidthRequest="60" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Margin="0,0,0,8"
+                                        FontAttributes="Bold"
+                                        FontSize="Large"
+                                        HorizontalOptions="CenterAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding VolumeInfo.Title}" />
+                                    <StackLayout
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        BindableLayout.ItemsSource="{Binding VolumeInfo.Authors}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackLayout>
+                                                    <Label
+                                                        FontAttributes="Italic"
+                                                        FontSize="Subtitle"
+                                                        HorizontalTextAlignment="Center"
+                                                        Text="{Binding}" />
+                                                </StackLayout>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                        <StackLayout.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding VolumeInfo.Authors, TargetNullValue=''}"
+                                                TargetType="StackLayout"
+                                                Value="">
+                                                <Setter Property="IsVisible" Value="false" />
+                                            </DataTrigger>
+                                        </StackLayout.Triggers>
+                                    </StackLayout>
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        FontSize="Subtitle"
+                                        HorizontalOptions="CenterAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding VolumeInfo.PublishedDate}" />
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.BookDetailCommand, Source={x:Reference ItemList}}" CommandParameter="{Binding}" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <ActivityIndicator
+                HeightRequest="50"
+                Color="#cf3"
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsBusy}"
+                IsRunning="{Binding IsBusy}"
+                VerticalOptions="Center"
+                WidthRequest="50" />
+        </StackLayout>
+</ContentPage>
