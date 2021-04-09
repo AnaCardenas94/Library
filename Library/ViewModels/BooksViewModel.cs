@@ -55,7 +55,7 @@ namespace Library.ViewModels
                 foreach(var item in response.Items)
                 {
                     if (item.VolumeInfo.ImageLinks == null)
-                        item.VolumeInfo.ImageLinks = new ImageLinks() { Thumbnail = new Uri("https://e1.pngegg.com/pngimages/27/900/png-clipart-android-lollipop-icons-play-books-google-books-icon-thumbnail.png") };
+                        item.VolumeInfo.ImageLinks = new ImageLinks() { Thumbnail = new Uri("https://assets.materialup.com/uploads/bf26d5d3-85ec-4c52-9ea9-b23bd21dab63/0x0ss-85.jpg") };
 
                     if (item.VolumeInfo.Authors == null)
                         item.VolumeInfo.Authors = new string[] { };
