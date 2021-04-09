@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     Title="BookDetail"
     x:Class="Library.BookDetail">
     <ScrollView>
@@ -17,6 +18,9 @@
                             Source="{Binding Thumbnail}"
                             VerticalOptions="Center"
                             WidthRequest="250">
+                            <ffimageloading:CachedImage.Transformations>
+                                            <ffTransformations:CircleTransformation/>
+                            </ffimageloading:CachedImage.Transformations>
                         </ffimageloading:CachedImage>
                         <Label
                             FontAttributes="Bold"

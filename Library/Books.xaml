@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     Title="Books"
+    xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     x:Class="Library.Books">
    <StackLayout Margin="0" Spacing="8">
             <CollectionView
@@ -17,11 +18,8 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <ContentView>
-                            <Frame
-                                Margin="16,8"
-                                BorderColor="#cf3"
-                                CornerRadius="16"
-                                HasShadow="False">
+                            <StackLayout
+                                Margin="18,8">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
@@ -41,7 +39,11 @@
                                         HorizontalOptions="Center"
                                         Source="{Binding VolumeInfo.ImageLinks.Thumbnail}"
                                         VerticalOptions="Center"
-                                        WidthRequest="60" />
+                                        WidthRequest="60" >
+                                        <ffimageloading:CachedImage.Transformations>
+                                            <ffTransformations:CircleTransformation/>
+                                        </ffimageloading:CachedImage.Transformations>
+                                     </ffimageloading:CachedImage>
                                     <Label
                                         Grid.Row="0"
                                         Grid.Column="1"
@@ -83,10 +85,11 @@
                                         HorizontalTextAlignment="Center"
                                         Text="{Binding VolumeInfo.PublishedDate}" />
                                 </Grid>
-                                <Frame.GestureRecognizers>
+                                <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" Margin=" 15,0" BackgroundColor="#cf3" />
+                                <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Path=BindingContext.BookDetailCommand, Source={x:Reference ItemList}}" CommandParameter="{Binding}" />
-                                </Frame.GestureRecognizers>
-                            </Frame>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
                         </ContentView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
