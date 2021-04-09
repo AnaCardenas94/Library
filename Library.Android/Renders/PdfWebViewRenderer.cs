@@ -20,8 +20,7 @@ namespace Library.Droid.Renders
             {
                 var customWebView = Element as PdfWebView;
                 Control.Settings.AllowUniversalAccessFromFileURLs = true;
-                Control.LoadUrl($"file:///android_asset/Content/{((PdfWebView)Element).Uri}");
-
+                Control.LoadUrl(string.Format("file:///android_asset/pdfjs/web/viewer.html?file={0}", customWebView.Uri));
             }
         }
 

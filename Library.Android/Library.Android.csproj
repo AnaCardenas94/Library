@@ -86,12 +86,20 @@
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
     <Folder Include="Renders\" />
+    <Folder Include="Assets\pdfjs\" />
+    <Folder Include="Assets\pdfjs\web\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Library\Library.csproj">
       <Project>{C5B45697-25BF-454F-B944-9B206CF86D0B}</Project>
       <Name>Library</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\pdfjs\web\viewer.html" />
+    <AndroidAsset Include="Assets\pdfjs\web\viewer.css" />
+    <AndroidAsset Include="Assets\pdfjs\web\viewer.js" />
+    <AndroidAsset Include="Assets\pdfjs\web\viewer.js.map" />
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
