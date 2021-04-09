@@ -11,7 +11,7 @@
                  VerticalOptions="FillAndExpand"
                  Spacing="0"
                  Margin="24,16">
-        <Label FontSize="18" Text="Google Books API" Padding="0,15" FontAttributes="Bold"/>
+        <Label FontSize="18" Text="Search Google Books" Padding="0,15" FontAttributes="Bold"/>
         <StackLayout Orientation="Horizontal">
             <Entry Placeholder="cats" Keyboard="Text" MaxLength="100" WidthRequest="180" Text="{Binding Book}"/>
             <Button Text="Search" TextColor="Black" BackgroundColor="#cf3" FontAttributes="Bold" WidthRequest="90" Command="{Binding SearchCommand}"/>
