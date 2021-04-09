@@ -52,6 +52,15 @@ namespace Library.ViewModels
             var response = await _bookService.GetBooksByPagination(bookByPagination);
             if (response.Items != null && response.Items.Count() > 0)
             {
+                foreach(var item in response.Items)
+                {
+                    if (item.VolumeInfo.ImageLinks == null)
+                        item.VolumeInfo.ImageLinks = new ImageLinks() { Thumbnail = new Uri("https://e1.pngegg.com/pngimages/27/900/png-clipart-android-lollipop-icons-play-books-google-books-icon-thumbnail.png") };
+
+                    if (item.VolumeInfo.Authors == null)
+                        item.VolumeInfo.Authors = new string[] { };
+                }
+
                 Items = new ObservableCollection<Item>(response.Items);
             }
             else
