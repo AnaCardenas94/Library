@@ -20,7 +20,8 @@ namespace Library.ViewModels
         public async void Search(Book book)
 
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new Books(book));
+            if(!string.IsNullOrEmpty(Book.Trim()))
+            await Application.Current.MainPage.Navigation.PushAsync(new Books(book));            
         }
     }
 }
